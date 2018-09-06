@@ -1,0 +1,2 @@
+$ nest g controller controller-name
+$ nest g service service/service-name

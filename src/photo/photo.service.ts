@@ -1,9 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, createConnection } from 'typeorm';
+import { Repository } from 'typeorm';
 import { Photo } from './photo.entity';
-import { Observable } from 'rxjs';
-import { async } from 'rxjs/internal/scheduler/async';
 @Injectable()
 export class PhotoService {
   constructor(
@@ -15,7 +13,6 @@ export class PhotoService {
     return await this.photoRepository.find();
   }
   async findById(id): Promise<Photo[]> {
-    console.log(id);
     return await this.photoRepository.find(id);
   }
   async findByQuery(param): Promise<Photo[]> {
@@ -35,8 +32,8 @@ export class PhotoService {
     photo.isPublished = data.isPublished;
     this.photoRepository.save(photo);
   }
-  deletePhoto(ids) {
-    this.photoRepository.remove(ids);
+  deletePhoto(id) {
+    this.photoRepository.remove(id);
   }
   async updatePhoto(data) {
     const updatePhoto = await this.photoRepository.findOne(data.id);
