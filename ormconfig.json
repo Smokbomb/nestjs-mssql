@@ -1,9 +1,9 @@
 {
 "type": "mssql",
-"host": "localhost",
-"username": "username",
-"password": "password",
-"database": "database",
+"host": "192.168.1.38",
+"username": "sa",
+"password": "VerticE@Thai",
+"database": "CUSTOM_DB",
 "entities":["src/**/**.entity{.ts,.js}"],
 "synchronize": true
 }

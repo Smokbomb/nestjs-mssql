@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Delete, Put, Param, Query, UsePipes } from '@nestjs/common';
+import { Controller, Get, Post, Body, Delete, Put, Param, Query, UsePipes, Header } from '@nestjs/common';
 import { PhotoService } from './photo.service';
 import { Photo } from './photo.entity';
 import { ValidationPipe } from './photo.pipes';
@@ -7,6 +7,7 @@ export class PhotoController {
   constructor(private readonly photoService: PhotoService) { }
 
   @Get()
+  @Header('Content-Type', 'application/json')
   findAll(@Query() query): Promise<Photo[]> {
     return this.photoService.findAll();
   }
